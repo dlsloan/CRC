@@ -8,7 +8,7 @@
 #include "CRC8.h"
 
 
-CRC8::CRC8()
+CRC8::CRC8(bool will_yield) : _will_yield(will_yield)
 {
   reset();
 }
@@ -38,7 +38,7 @@ void CRC8::restart()
 void CRC8::add(uint8_t value)
 {
   _count++;
-  if ((_count & 0xff) == 0xff)
+  if (_will_yield && (_count & 0xff) == 0xff)
     yield();
   _update(value);
 }

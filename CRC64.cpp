@@ -8,7 +8,7 @@
 #include "CRC64.h"
 
 
-CRC64::CRC64()
+CRC64::CRC64(bool will_yield) : _will_yield(will_yield)
 {
   reset();
 }
@@ -38,7 +38,7 @@ void CRC64::restart()
 void CRC64::add(uint8_t value)
 {
   _count++;
-  if ((_count & 0xff) == 0xff)
+  if (_will_yield && (_count & 0xff) == 0xff)
     yield();
   _update(value);
 }

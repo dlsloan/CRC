@@ -8,7 +8,7 @@
 #include "CRC32.h"
 
 
-CRC32::CRC32()
+CRC32::CRC32(bool will_yield) : _will_yield(will_yield)
 {
   reset();
 }
@@ -38,7 +38,7 @@ void CRC32::restart()
 void CRC32::add(uint8_t value)
 {
   _count++;
-  if ((_count & 0xff) == 0xff)
+  if (_will_yield && (_count & 0xff) == 0xff)
     yield();
   _update(value);
 }

@@ -14,7 +14,7 @@
 class CRC64
 {
 public:
-  CRC64();
+  CRC64(bool will_yield=true);
 
   // set parameters to default
   void     reset();       // set all to constructor defaults
@@ -52,6 +52,7 @@ private:
   bool     _reverseIn;
   bool     _reverseOut;
   bool     _started;
+  bool     _will_yield;
   uint64_t _count;
 };
 

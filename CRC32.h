@@ -14,7 +14,7 @@
 class CRC32
 {
 public:
-  CRC32();
+  CRC32(bool will_yield=true);
 
   // set parameters to default
   void     reset();       // set all to constructor defaults
@@ -52,6 +52,7 @@ private:
   bool     _reverseIn;
   bool     _reverseOut;
   bool     _started;
+  bool     _will_yield;
   uint32_t _count;
 };
 
