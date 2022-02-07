@@ -44,7 +44,7 @@ void CRC64::add(uint8_t value)
 }
 
 
-void CRC64::add(const uint8_t * array, uint8_t length)
+void CRC64::add(const uint8_t * array, int length)
 {
   while (length--)
     add(*array++);
